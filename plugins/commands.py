@@ -411,7 +411,6 @@ async def start(client, message):
     user = message.from_user.id
     files_ = await get_file_details(file_id)           
     if not files_:
-        try:
     pre_file_id = (base64.urlsafe_b64decode(data + "=" * (-len(data) % 4)).decode("utf-8")).split("_", 1)
 except UnicodeDecodeError:
     # Handle the error or log it
