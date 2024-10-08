@@ -171,12 +171,12 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot):
                     continue
                 media.file_type = message.media.value
                 media.caption = message.caption
-                aynav, vnay = await save_file(media)
-                if aynav:
+                sts = await save_file(media)
+                if sts == 'suc':
                     total_files += 1
-                elif vnay == 0:
+                elif sts == 'dup':
                     duplicate += 1
-                elif vnay == 2:
+                elif sts == 'err':
                     errors += 1
         except Exception as e:
             logger.exception(e)
