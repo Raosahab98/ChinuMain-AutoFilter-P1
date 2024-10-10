@@ -63,12 +63,12 @@ WEBSITE_URL = environ.get("WEBSITE_URL", "https://moviefilez4you.blogspot.com/20
 
 # Others
 PAYMENT_QR = environ.get('PAYMENT_QR', 'https://telegra.ph/file/4ac7b5660f01c6b643a59.jpg')
-VERIFY = bool(environ.get('VERIFY', True))
+VERIFY = bool(environ.get('VERIFY', False))
 SHORTLINK_URL = environ.get('SHORTLINK_URL', 'earnmoneys.xyz')
 SHORTLINK_API = environ.get('SHORTLINK_API', '19d11b51fcb6fb710164545746e96c9912ad069f')
 SECOND_SHORTLINK_URL = environ.get('SECOND_SHORTLINK_URL', '')
 SECOND_SHORTLINK_API = environ.get('SECOND_SHORTLINK_API', '')
-IS_SHORTLINK = bool(environ.get('IS_SHORTLINK', False))
+IS_SHORTLINK = bool(environ.get('IS_SHORTLINK', True))
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
 MAX_B_TN = environ.get("MAX_B_TN", "5")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
