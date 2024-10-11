@@ -4,7 +4,7 @@ import datetime
 import time
 from database.users_chats_db import db
 from info import ADMINS
-from utils import broadcast_messages, broadcast_messages_group, temp, get_readable_time
+from utils import broadcast_messages, broadcast_messages_group, temp
 import asyncio
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup 
 
@@ -48,7 +48,7 @@ async def broadcast_users(bot, message):
 
     async with lock:
         async for user in users:
-            time_taken = get_readable_time(time.time()-start_time)
+            time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
             if temp.USERS_CANCEL:
                 temp.USERS_CANCEL = False
                 await b_sts.edit(f"Users broadcast Cancelled!\nCompleted in {time_taken}\n\nTotal Users: <code>{total_users}</code>\nCompleted: <code>{done} / {total_users}</code>\nSuccess: <code>{success}</code>")
@@ -89,7 +89,7 @@ async def broadcast_group(bot, message):
     
     async with lock:
         async for chat in chats:
-            time_taken = get_readable_time(time.time()-start_time)
+            time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
             if temp.GROUPS_CANCEL:
                 temp.GROUPS_CANCEL = False
                 await b_sts.edit(f"Groups broadcast Cancelled!\nCompleted in {time_taken}\n\nTotal Groups: <code>{total_chats}</code>\nCompleted: <code>{done} / {total_chats}</code>\nSuccess: <code>{success}</code>\nFailed: <code>{failed}</code>")
