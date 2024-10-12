@@ -24,6 +24,7 @@ async def verupikkals(bot, message):
 
     success = 0
     async for user in users:
+        if 'id' in user:
         pti, sh = await broadcast_messages(int(user['id']), b_msg)
         if pti:
             success += 1
