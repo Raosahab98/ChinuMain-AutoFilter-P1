@@ -19,7 +19,10 @@ async def link_handler(Mbot, message):
     link = message.matches[0].group(0)
     global headers
     try:
+        # Send the sticker and delete it after 3 seconds
         m = await message.reply_sticker("CAACAgQAAx0CexfrAAS9ZkAuVJEp16-4r556aQ9Sxh16oUAAAm4PAALh6rFQ2jEHmOgnEaIeBA")
+        await asyncio.sleep(3)
+        await m.delete()  # Auto-delete the sticker after delay
         url= link.replace("instagram.com","ddinstagram.com")
         url=url.replace("==","%3D%3D")
         if url.endswith("="):
