@@ -1121,10 +1121,9 @@ async def set_send_movie_on(client, message):
     bot_id = client.me.id
     if user_id not in ADMINS:
         await message.delete()
-        return
-    
+        return    
     await db.update_send_movie_update_status(bot_id, enable=True)
-    await message.reply_text("<b><i>✅️ Send Movie Upeate Enabled.</i></b>")
+    await message.reply_text("<b><i>✅️ ꜱᴇɴᴅ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇ ᴇɴᴀʙʟᴇᴅ.</i></b>")
 
 @Client.on_message(filters.private & filters.command("movie_update_off"))
 async def set_send_movie_update_off(client, message):
@@ -1132,10 +1131,9 @@ async def set_send_movie_update_off(client, message):
     bot_id = client.me.id
     if user_id not in ADMINS:
         await message.delete()
-        return
-    
+        return    
     await db.update_send_movie_update_status(bot_id, enable=False)
-    await message.reply_text("<b><i>❌️ Send Movie Update Disabled.</i></b>")
+    await message.reply_text("<b><i>❌️ ꜱᴇɴᴅ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇ ᴅɪꜱᴀʙʟᴇᴅ.</i></b>")
         
 @Client.on_message(filters.command("restart") & filters.user(ADMINS))
 async def stop_button(bot, message):
