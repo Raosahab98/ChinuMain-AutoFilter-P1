@@ -1,8 +1,6 @@
 # https://github.com/odysseusmax/animated-lamp/blob/master/bot/database/database.py
-from motor.motor_asyncio import AsyncIOMotorClient
+import motor.motor_asyncio
 from info import DATABASE_NAME, DATABASE_URI, IS_SEND_MOVIE_UPDATE, IMDB, IMDB_TEMPLATE, MELCOW_NEW_USERS, P_TTI_SHOW_OFF, SINGLE_BUTTON, SPELL_CHECK_REPLY, PROTECT_CONTENT, AUTO_DELETE, MAX_BTN, AUTO_FFILTER, SHORTLINK_API, SHORTLINK_URL, IS_SHORTLINK, TUTORIAL, IS_TUTORIAL
-client = AsyncIOMotorClient(DATABASE_URI)
-mydb = client[DATABASE_NAME]
 
 class Database:
     
@@ -11,6 +9,7 @@ class Database:
         self.db = self._client[database_name]
         self.col = self.db.users
         self.grp = self.db.groups
+        self.botcol = self.db.extrad
 
 
     def new_user(self, id, name):
