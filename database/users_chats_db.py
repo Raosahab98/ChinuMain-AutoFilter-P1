@@ -177,4 +177,4 @@ async def movies_update_channel_id(self , id=None):
                 return None
         return await self.movies_update_channel.update_one({} , {'$set': {'id': id}} , upsert=True)
     
-db = Database()
+db = Database(DATABASE_URI, DATABASE_NAME)
