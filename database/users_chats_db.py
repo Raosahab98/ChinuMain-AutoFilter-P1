@@ -7,11 +7,10 @@ mydb = client[DATABASE_NAME]
 class Database:
     
     def __init__(self, uri, database_name):
-        self._client = motor.motor_asyncio.AsyncIOMotorClient(database_uri)
-        self.db = self._client[database_name]
         self.col = self.db.users
         self.grp = self.db.groups
         self.botcol = self.db.extrad
+        self.movies_update_channel = mydb.movies_update_channel
 
 
     def new_user(self, id, name):
