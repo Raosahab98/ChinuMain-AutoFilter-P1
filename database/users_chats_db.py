@@ -7,7 +7,7 @@ mydb = client[DATABASE_NAME]
 class Database:
     
     def __init__(self, uri, database_name):
-        self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
+        self._client = motor.motor_asyncio.AsyncIOMotorClient(database_uri)
         self.db = self._client[database_name]
         self.col = self.db.users
         self.grp = self.db.groups
@@ -176,4 +176,4 @@ async def movies_update_channel_id(self , id=None):
                 return None
         return await self.movies_update_channel.update_one({} , {'$set': {'id': id}} , upsert=True)
     
-db = Database()
+db = Database(DATABASE_URI, DATABASE_NAME)
